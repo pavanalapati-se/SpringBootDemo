@@ -24,7 +24,7 @@ public class CourseController {
 	@Autowired
 	private CourseService courseService;
 
-	@GetMapping("/courses")
+	@GetMapping("/loadcourses")
 	public ModelAndView loadCoursesPage(HttpServletRequest request) {
 
 		List<CourseDto> courses = courseService.getAllCourses();
@@ -60,10 +60,10 @@ public class CourseController {
 
 		return modelAndView;
 	}
-	@GetMapping("/courses/{id}")
-	public ModelAndView loadCourseBasedOnId(@PathVariable("id") int courseId) {
+	@GetMapping("/loadcourses/{courseid}")
+	public ModelAndView loadCourseBasedOnId(@PathVariable("courseid") int courseId) {
 		
-		CourseDto  courseDto  = courseService.searchCourseById(courseId);
+		CourseDto  courseDto  = courseService.searchCourse(courseId);
 		
 		ModelAndView modelAndView = new ModelAndView(); 
 		modelAndView.addObject("course", courseDto);

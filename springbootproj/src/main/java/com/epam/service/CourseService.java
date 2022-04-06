@@ -22,7 +22,7 @@ public class CourseService {
 		return courseDao.save(courseDto);
 	}
 	
-	public CourseDto searchCourseById(int courseId) {
+	public CourseDto searchCourse(int courseId) {
 		return courseDao.getCourseById(courseId);
 	}
 }
