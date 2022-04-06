@@ -21,4 +21,8 @@ public class CourseService {
 	public CourseDto createCourse(CourseDto courseDto) {
 		return courseDao.save(courseDto);
 	}
+	
+	public CourseDto searchCourseById(int courseId) {
+		return courseDao.getCourseById(courseId);
+	}
 }
