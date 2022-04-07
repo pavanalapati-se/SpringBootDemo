@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,8 @@
 <body>
 	<h2>Add Course Page</h2>
 	<hr />
-	<form:form action="/addcourse" method="post" modelAttribute="courseDto">
+	<form:form action="/ocms/addcourse" method="post"
+		modelAttribute="courseDto">
 		<table>
 			<tr>
 				<td>Course Id</td>
@@ -34,6 +36,15 @@
 				<td><form:input path="courseDuration" /></td>
 				<td><form:errors path="courseDuration" cssClass="error"></form:errors></td>
 			</tr>
+
+			<tr>
+				<td>Assignment id</td>
+				<td><form:input path="assignments[0].assignmentId" /></td>
+				<td>Assignment Name</td>
+				<td><form:input path="assignments[0].assignmentName" /></td>
+			</tr>
+
+
 			<tr>
 				<td><input type="submit" value="Add Course"></td>
 			</tr>

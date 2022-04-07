@@ -1,11 +1,11 @@
 package com.epam.dto;
 
-import java.time.LocalDate;
+import java.util.List;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
+
 
 public class CourseDto {
 
@@ -19,6 +19,7 @@ public class CourseDto {
 	@NotBlank(message="Please enter Course Duration")
 	private String courseDuration;
 	
+	private List<AssignmentDto> assignments;
 
 	public int getCourseId() {
 		return courseId;
@@ -44,10 +45,19 @@ public class CourseDto {
 		this.courseDuration = courseDuration;
 	}
 
+
+	public List<AssignmentDto> getAssignments() {
+		return assignments;
+	}
+
+	public void setAssignments(List<AssignmentDto> assignments) {
+		this.assignments = assignments;
+	}
+
 	@Override
 	public String toString() {
 		return "CourseDto [courseId=" + courseId + ", courseName=" + courseName + ", courseDuration=" + courseDuration
-				+ "]";
+				+ ", assignments=" + assignments + "]";
 	}
 	
 	

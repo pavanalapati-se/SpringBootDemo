@@ -24,12 +24,15 @@
 				<td>${course.courseId}</td>
 				<td>${course.courseName}</td>
 				<td>${course.courseDuration}</td>
+				<td><a href="/loadeditcourse">Edit Course</a></td>
+				<td><a href="/loaddeletecourse">Delete Course</a></td>
 			</tr>
 
 		</core:forEach>
 
 	</table>
 
+	<span><a href="/ocms/loadaddcoursepage">Click Here to Add New Course</a></span>
 
 </body>
 </html>

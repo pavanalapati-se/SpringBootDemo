@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.epam.dto.CourseDto;
@@ -46,14 +47,14 @@ public class CourseController {
 	}
 
 	@PostMapping(value = "addcourse")
-	public ModelAndView addCourse(@Valid @ModelAttribute CourseDto courseDto, BindingResult result,HttpServletRequest request) {
+	public ModelAndView addCourse(@Valid CourseDto courseDto, BindingResult result,HttpServletRequest request) {
 
 		ModelAndView modelAndView = new ModelAndView();
 
 		if (result.hasErrors()) {
 			modelAndView.setViewName("addCourse");
 		} else {
-			
+			System.out.println(courseDto);
 			courseService.createCourse(courseDto);
 			modelAndView.setViewName("success");
 		}
@@ -69,5 +70,11 @@ public class CourseController {
 		modelAndView.addObject("course", courseDto);
 		modelAndView.setViewName("viewCourse");
 		return modelAndView;
+	}
+	
+	@PostMapping("/loaddeletecourses")
+	public String loadDeleteCourse(@RequestParam("courseId")  int courseId) {
+		System.out.println("delete course logic : "+courseId);
+		return "success";
 	}
 }
