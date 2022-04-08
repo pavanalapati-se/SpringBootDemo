@@ -38,10 +38,26 @@
 			</tr>
 
 			<tr>
-				<td>Assignment id</td>
-				<td><form:input path="assignments[0].assignmentId" /></td>
-				<td>Assignment Name</td>
-				<td><form:input path="assignments[0].assignmentName" /></td>
+				<td>
+					<table>
+						<tr>
+							<th>Assignment Id</th>
+							<th>Assignment Name</th>
+						</tr>
+						<tr>
+							<td><form:input path="assignments[0].assignmentId" /></td>
+							<td><form:textarea path="assignments[0].assignmentName" /></td>
+						</tr>
+						<tr>
+							<td><form:input path="assignments[1].assignmentId"  /></td>
+							<td><form:textarea path="assignments[1].assignmentName" /></td>
+						</tr>
+						<tr>
+							<td><form:input path="assignments[2].assignmentId"  /></td>
+							<td><form:textarea path="assignments[2].assignmentName" /></td>
+						</tr>
+					</table>
+				</td>
 			</tr>
 
 
