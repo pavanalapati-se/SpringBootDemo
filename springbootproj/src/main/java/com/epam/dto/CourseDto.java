@@ -3,6 +3,7 @@ package com.epam.dto;
 import java.util.List;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
@@ -16,8 +17,8 @@ public class CourseDto {
 	@Size(min=3, max=20, message = "Course name should be minimum 3 characters and maximum 20 characters")
 	private String courseName;
 	
-	@NotBlank(message="Please enter Course Duration")
-	private String courseDuration;
+	@NotNull(message="Please enter Course Duration")
+	private double courseDuration;
 	
 	private List<AssignmentDto> assignments;
 
@@ -37,14 +38,13 @@ public class CourseDto {
 		this.courseName = courseName;
 	}
 
-	public String getCourseDuration() {
+	public double getCourseDuration() {
 		return courseDuration;
 	}
 
-	public void setCourseDuration(String courseDuration) {
+	public void setCourseDuration(double courseDuration) {
 		this.courseDuration = courseDuration;
 	}
-
 
 	public List<AssignmentDto> getAssignments() {
 		return assignments;

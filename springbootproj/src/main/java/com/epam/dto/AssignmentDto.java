@@ -3,8 +3,8 @@ package com.epam.dto;
 public class AssignmentDto {
 
 	private int assignmentId;
-	
-	private String assignmentName;
+
+	private String assignmentDescription;
 
 	public int getAssignmentId() {
 		return assignmentId;
@@ -14,18 +14,17 @@ public class AssignmentDto {
 		this.assignmentId = assignmentId;
 	}
 
-	public String getAssignmentName() {
-		return assignmentName;
+	public String getAssignmentDescription() {
+		return assignmentDescription;
 	}
 
-	public void setAssignmentName(String assignmentName) {
-		this.assignmentName = assignmentName;
+	public void setAssignmentDescription(String assignmentDescription) {
+		this.assignmentDescription = assignmentDescription;
 	}
 
 	@Override
 	public String toString() {
-		return "AssignmentDto [assignmentId=" + assignmentId + ", assignmentName=" + assignmentName + "]";
+		return "AssignmentDto [assignmentId=" + assignmentId + ", assignmentDescription=" + assignmentDescription + "]";
 	}
-	
-	
+
 }

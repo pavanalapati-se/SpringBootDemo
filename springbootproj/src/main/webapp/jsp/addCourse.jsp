@@ -46,15 +46,15 @@
 						</tr>
 						<tr>
 							<td><form:input path="assignments[0].assignmentId" /></td>
-							<td><form:textarea path="assignments[0].assignmentName" /></td>
+							<td><form:textarea path="assignments[0].assignmentDescription" /></td>
 						</tr>
 						<tr>
 							<td><form:input path="assignments[1].assignmentId"  /></td>
-							<td><form:textarea path="assignments[1].assignmentName" /></td>
+							<td><form:textarea path="assignments[1].assignmentDescription" /></td>
 						</tr>
 						<tr>
 							<td><form:input path="assignments[2].assignmentId"  /></td>
-							<td><form:textarea path="assignments[2].assignmentName" /></td>
+							<td><form:textarea path="assignments[2].assignmentDescription" /></td>
 						</tr>
 					</table>
 				</td>

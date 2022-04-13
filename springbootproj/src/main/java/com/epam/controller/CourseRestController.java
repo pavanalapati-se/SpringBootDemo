@@ -22,23 +22,23 @@ import com.epam.service.CourseService;
 @RequestMapping("/courses")
 public class CourseRestController {
 
-	@Autowired
-	private CourseService courseService;
-
-	@GetMapping
-	public List<CourseDto> findAllCourses() {
-		return courseService.getAllCourses();
-	}
-
-	@PostMapping
-	public ResponseEntity<CourseDto> insert(@RequestBody@Valid CourseDto courseDto) {
-		return new ResponseEntity<CourseDto>(courseService.createCourse(courseDto), HttpStatus.CREATED);
-	}
-
-	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<CourseDto> get(@PathVariable("id") int courseId) {
-		return new ResponseEntity<CourseDto>(courseService.searchCourse(courseId), HttpStatus.OK);
-	}
+//	@Autowired
+//	private CourseService courseService;
+//
+//	@GetMapping
+//	public List<CourseDto> findAllCourses() {
+//		return courseService.getAllCourses();
+//	}
+//
+//	@PostMapping
+//	public ResponseEntity<CourseDto> insert(@RequestBody@Valid CourseDto courseDto) {
+//		return new ResponseEntity<CourseDto>(courseService.createCourse(courseDto), HttpStatus.CREATED);
+//	}
+//
+//	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+//	public ResponseEntity<CourseDto> get(@PathVariable("id") int courseId) {
+//		return new ResponseEntity<CourseDto>(courseService.searchCourse(courseId), HttpStatus.OK);
+//	}
 	
 	
 }

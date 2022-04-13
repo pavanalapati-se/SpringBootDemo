@@ -31,13 +31,13 @@ public class CourseController {
 		List<CourseDto> courses = courseService.getAllCourses();
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("courses", courses);
-		
+
 		modelAndView.setViewName("viewCourses");
 
 		return modelAndView;
 
 	}
-	
+
 	@GetMapping("loadaddcoursepage")
 	public ModelAndView loadAddCoursePage() {
 		ModelAndView modelAndView = new ModelAndView();
@@ -47,7 +47,7 @@ public class CourseController {
 	}
 
 	@PostMapping(value = "addcourse")
-	public ModelAndView addCourse(@Valid CourseDto courseDto, BindingResult result,HttpServletRequest request) {
+	public ModelAndView addCourse(@Valid CourseDto courseDto, BindingResult result, HttpServletRequest request) {
 
 		ModelAndView modelAndView = new ModelAndView();
 
@@ -61,20 +61,31 @@ public class CourseController {
 
 		return modelAndView;
 	}
+
 	@GetMapping("/loadcourses/{courseid}")
 	public ModelAndView loadCourseBasedOnId(@PathVariable("courseid") int courseId) {
-		
-		CourseDto  courseDto  = courseService.searchCourse(courseId);
-		
-		ModelAndView modelAndView = new ModelAndView(); 
+
+		CourseDto courseDto = courseService.searchCourse(courseId);
+
+		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("course", courseDto);
 		modelAndView.setViewName("viewCourse");
 		return modelAndView;
 	}
-	
+
 	@PostMapping("/loaddeletecourses")
-	public String loadDeleteCourse(@RequestParam("courseId")  int courseId) {
-		System.out.println("delete course logic : "+courseId);
+	public String loadDeleteCourse(@RequestParam("courseId") int courseId) {
+		System.out.println("delete course logic : " + courseId);
 		return "success";
+	}
+
+	@GetMapping("/loadcoursesonduration/{courseduration}")
+	public ModelAndView loadCourses(@PathVariable("courseduration") double courseDuration) {
+		List<CourseDto> courses = courseService.searchCourse(courseDuration);
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("courses", courses);
+		modelAndView.setViewName("viewCourses");
+		return modelAndView;
 	}
 }
