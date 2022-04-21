@@ -28,6 +28,25 @@ public class CourseService {
 		return toDto(courseRepository.save(toEntity(courseDto)));
 	}
 
+	public CourseDto updateCourse(CourseDto courseDto) {
+
+		Course course = courseRepository.findById(courseDto.getCourseId()).orElseThrow(
+				() -> new CourseNotFoundException("Course not found with Id : " + courseDto.getCourseId()));
+
+		course.setCourseName(courseDto.getCourseName());
+		course.setCourseDuration(courseDto.getCourseDuration());
+
+		return toDto(courseRepository.save(course));
+	}
+
+	public void deleteCourse(int courseId) {
+
+		Course course = courseRepository.findById(courseId).orElseThrow(
+				() -> new CourseNotFoundException("Course not found with Id : " + courseId));
+		courseRepository.delete(course);
+
+	}
+
 	public List<CourseDto> toListDto(List<Course> courses) {
 		mapper = new ModelMapper();
 		return courses.stream().map(course -> mapper.map(course, CourseDto.class)).collect(Collectors.toList());
@@ -48,8 +67,9 @@ public class CourseService {
 		return toDto(courseRepository.findById(courseId)
 				.orElseThrow(() -> new CourseNotFoundException("Course not found With : " + courseId)));
 	}
-	
-	public List<CourseDto> searchCourse(double courseDuration){
+
+	public List<CourseDto> searchCourse(double courseDuration) {
 		return toListDto(courseRepository.findByCourseDuration(courseDuration));
 	}
+
 }

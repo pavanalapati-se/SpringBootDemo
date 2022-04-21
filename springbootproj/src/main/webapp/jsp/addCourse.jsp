@@ -18,7 +18,7 @@
 <body>
 	<h2>Add Course Page</h2>
 	<hr />
-	<form:form action="/ocms/addcourse" method="post"
+	<form:form action="/addcourse" method="post"
 		modelAttribute="courseDto">
 		<table>
 			<tr>

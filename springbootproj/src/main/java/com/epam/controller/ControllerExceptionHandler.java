@@ -28,6 +28,8 @@ public class ControllerExceptionHandler {
 		exRes.setPath(request.getDescription(false));
 		return new ResponseEntity<ExceptionResponse>(exRes,HttpStatus.BAD_REQUEST);
 	}
+	
+	
 	@ExceptionHandler(value = MethodArgumentNotValidException.class)
 	public ResponseEntity<ExceptionResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception,WebRequest request){
 		
