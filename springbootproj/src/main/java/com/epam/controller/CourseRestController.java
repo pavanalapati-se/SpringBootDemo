@@ -2,6 +2,8 @@ package com.epam.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +34,10 @@ public class CourseRestController {
 	}
 
 	@PostMapping
-	public ResponseEntity<CourseDto> insert(@RequestBody @Valid CourseDto courseDto) {
+	public ResponseEntity<CourseDto> insert(@RequestBody @Valid CourseDto courseDto,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		
+		session.getId();
 		return new ResponseEntity<CourseDto>(courseService.createCourse(courseDto), HttpStatus.CREATED);
 	}
 
