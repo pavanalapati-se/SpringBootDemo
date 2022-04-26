@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,7 @@ public class CourseController {
 	private CourseService courseService;
 
 	@GetMapping("/loadcourses")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ModelAndView loadCoursesPage(HttpServletRequest request) {
 
 		List<CourseDto> courses = courseService.getAllCourses();
@@ -38,6 +40,7 @@ public class CourseController {
 	}
 
 	@GetMapping("loadaddcoursepage")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ModelAndView loadAddCoursePage() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("courseDto", new CourseDto());
@@ -46,6 +49,7 @@ public class CourseController {
 	}
 
 	@PostMapping(value = "addcourse")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ModelAndView addCourse(@Valid CourseDto courseDto, BindingResult result, HttpServletRequest request) {
 
 		ModelAndView modelAndView = new ModelAndView();
@@ -62,6 +66,7 @@ public class CourseController {
 	}
 
 	@GetMapping("/loadcourses/{courseid}")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ModelAndView loadCourseBasedOnId(@PathVariable("courseid") int courseId) {
 
 		CourseDto courseDto = courseService.searchCourse(courseId);
@@ -73,12 +78,14 @@ public class CourseController {
 	}
 
 	@PostMapping("/loaddeletecourses")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public String loadDeleteCourse(@RequestParam("courseId") int courseId) {
 		System.out.println("delete course logic : " + courseId);
 		return "success";
 	}
 
 	@GetMapping("/loadcoursesonduration/{courseduration}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ModelAndView loadCourses(@PathVariable("courseduration") double courseDuration) {
 		List<CourseDto> courses = courseService.searchCourse(courseDuration);
 
