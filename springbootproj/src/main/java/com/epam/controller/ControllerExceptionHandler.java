@@ -14,6 +14,8 @@ import org.springframework.web.context.request.WebRequest;
 import com.epam.dto.ExceptionResponse;
 import com.epam.exception.CourseNotFoundException;
 
+import io.jsonwebtoken.SignatureException;
+
 @RestControllerAdvice
 public class ControllerExceptionHandler {
 
@@ -46,4 +48,6 @@ public class ControllerExceptionHandler {
 		exRes.setPath(request.getDescription(false));
 		return new ResponseEntity<ExceptionResponse>(exRes,HttpStatus.BAD_REQUEST);
 	}
+	
+
 }
